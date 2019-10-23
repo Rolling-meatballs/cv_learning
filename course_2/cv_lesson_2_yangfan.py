@@ -166,7 +166,7 @@ def hand_low_medianblur():
     # show(md_img, 'l_img ')
 
 #降低复杂度的方法
-def high_medianblur(lay):
+# def high_medianblur(lay):
 
 
 #对图像进行处理后输出_high

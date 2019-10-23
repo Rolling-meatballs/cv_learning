@@ -3,7 +3,6 @@ import cv2
 import numpy as np
 
 
-name = 'woman'
 
 # 带有时间的打印函数，可以替代print
 def log(*args, **kwargs):
@@ -18,6 +17,12 @@ def show(img, name):
     key = cv2.waitKey()
     if key == 27:
         cv2.destroyAllWindows()
+
+# 原图显示
+def Or_show():
+    name = 'woman'
+    img = Pic().pic_c()
+    show(img, name)
 
 #图像读取函数
 class Pic(object):
@@ -38,9 +43,10 @@ class Pic(object):
 
 #利用opencv进行中值滤波处理
 def cv2_medianblur():
-    md_img = cv2.medianBlur(Pic().pic_c(), 7)
-    show(Pic().pic_c(), name)
-    show(md_img, name)
+    Pic_c = Pic().pic_c()
+    md_img = cv2.medianBlur(Pic_c, 7)
+    Or_show()
+    show(md_img, 'md_woman')
 
 #将含有9个数的数组中的值排序，并其中间值
 def median(list):
@@ -139,7 +145,7 @@ def read_pic(lay, name):
 
 
 
-#对图像进行处理后输出
+#对图像进行处理后输出_low
 def hand_low_medianblur():
     B, G, R = Pic().pic_RGB()
 
@@ -159,11 +165,20 @@ def hand_low_medianblur():
 
     # show(md_img, 'l_img ')
 
+#降低复杂度的方法
+def high_medianblur(lay):
+
+
+#对图像进行处理后输出_high
+def hand_high_medianblur():
+    B, G, R = Pic.pic_RGB()
+
 
 #调用需要测试的函数
 def test():
     # cv2_medianblur() #利用opencv的中值滤波函数的操作
-    hand_low_medianblur() #自己编写的中值滤波函数
+    hand_low_medianblur() #自己编写的low_lever的中值滤波函数
+    # hand_high_medianblur()#自己编写的high_lever的中值滤波函数
 
 
 if __name__ == '__main__':

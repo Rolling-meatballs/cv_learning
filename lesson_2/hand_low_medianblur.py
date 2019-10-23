@@ -2,7 +2,7 @@ import numpy as np
 from out_put import log
 
 
-#将含有9个数的数组中的值排序，并其中间值
+#将含有9个数的数组中的值排序，并取其中间值
 def median(list):
     order_list = sorted(list)
     # log('order_list', order_list)
@@ -17,36 +17,28 @@ def low_short(lay):
     # log(lay[0])
     # log(colomn)
     # log(row)
-    i = 0
     end_n = np.empty(shape=[0, colomn - 2], dtype=int)
-    while i < (row - 2):
+    for i in range(row - 2):
         middle_n = []
-        j = 0
-        while j < (colomn - 2):
+        for j in range(colomn - 2):
             a = []
             # log(a)
-            k = 0
-            while k < 3:
-                d = 0
-                while d < 3:
+            for k in range(3):
+                for d in range(3):
                     s = lay[i + k][j + d]
                     a.append(s)
                     # log(a)
-                    d += 1
-                k += 1
             middle = median(a)
             # log('middle', middle)
             middle_n.append(middle)
-            j += 1
             # log('middle_n', middle_n)
             # log(j)
-        i += 1
         # i = 340
         # log('middle_n', middle_n)
         end_n = np.append(end_n, [middle_n], axis=0)
         # log(i)
         # log('end_n', end_n)
-    log('end_n_short', end_n)
+    # log('end_n_short', end_n)
     # value2 = time.localtime(int(time.time()))
     # value = value2 - value1
     # # time_format = '%Y/%m/%d %H:%M:%S'

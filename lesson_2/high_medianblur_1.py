@@ -2,16 +2,13 @@ import numpy as np
 from out_put import log
 from hand_low_medianblur import median
 
-
-
 #降低复杂度的方法1
 def high_medianblur_1(lay):
     row, colomn = lay.shape
     # log('row', row, 'colomn', colomn)
-    i = 1
     j = 0
     end_n = np.empty(shape=[0, colomn - 2], dtype=int)
-    while i < (row - 1):
+    for i in range(1, row - 1):
         # log('row', i)
         middle_n = []
         if j == 0:
@@ -26,17 +23,14 @@ def high_medianblur_1(lay):
                 k = 0
                 i_i = i - 1
                 j_j = j - 1
-                while k < 3:
-                    d = 0
-                    while d < 3:
+                for k in range(3):
+                    for d in range(3):
                         s = lay[i_i + k][j_j + d]
                         a.append(s)
                         # log(a)
-                        d += 1
-                    k += 1
                 j += 1
             #第一行之后的后边缘窗口处理
-            elif j == (colomn - 1) and (i % 2) == 0:
+            elif j == (colomn - 2) and (i % 2) == 0:
                 for s in range(6):
                     a[s] = a[s + 3]
                 a[6] = lay[i + 1][j - 1]
@@ -79,11 +73,10 @@ def high_medianblur_1(lay):
             middle = median(a)
             # log('middle', middle)
             middle_n.append(middle)
-        i += 1
         # i = 340
         # log('middle_n', middle_n)
         end_n = np.append(end_n, [middle_n], axis=0)
-    log('end_n_short', end_n)
+    # log('end_n_short', end_n)
     return end_n
 
 

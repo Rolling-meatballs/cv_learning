@@ -26,7 +26,7 @@ def hand_medianblur(way):
     l_G = way(G)
     l_R = way(R)
     # log(B)
-    l_img = cv2.merge((l_R, l_G, l_B)) #多图层图片融合
+    l_img = cv2.merge((l_B, l_G, l_R)) #多图层图片融合
     show(l_img, 'l_img ')
     # show(l_B, 'l_B_img ')
     # show(R, 'R_img ')
@@ -50,8 +50,8 @@ def hand_high_2():
 
 #生成小规模数据
 def data():
-    a = 5
-    b = 5
+    a = 10
+    b = 10
     n = np.zeros((a,b), dtype='int')
     k = 1
     for i in range(a):
@@ -64,18 +64,15 @@ def data():
 #小数据测试
 def l_test():
     a = data()
-    high_medianblur_1(a)
+    high_medianblur_2(a)
 
 #调用需要测试的函数
 def test():
 
     # cv2_medianblur() #利用opencv的中值滤波函数的操作
     # hand_low() #自己编写的low_lever的中值滤波函数
-    hand_high_1()#自己编写的high_lever的中值滤波函数,方法1
-    # hand_high_2()#自己编写的high_lever的中值滤波函数,方法2
-
-
-
+    # hand_high_1()#自己编写的high_lever的中值滤波函数,方法1
+    hand_high_2()#自己编写的high_lever的中值滤波函数,方法2
 
 
 if __name__ == '__main__':

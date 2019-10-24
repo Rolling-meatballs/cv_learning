@@ -17,7 +17,7 @@ def low_short(lay):
     # log(lay[0])
     # log(colomn)
     # log(row)
-    end_n = np.empty(shape=[0, colomn - 2], dtype=int) #二维空数组建立
+    end_n = np.empty(shape=[0, colomn - 2], dtype=np.uint8) #二维空数组建立
     for i in range(row - 2):
         middle_n = []
         for j in range(colomn - 2):

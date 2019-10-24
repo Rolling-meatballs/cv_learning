@@ -1,8 +1,5 @@
 import numpy as np
 from out_put import log
-from picture_show import (
-    Pic,
-)
 
 #创建排序数组
 def array():
@@ -36,11 +33,12 @@ def high_medianblur_2(lay):
     row, colomn = lay.shape
     # log('row', row, 'colomn', colomn)
     j = 1
+    v = 0
     count = array()
-    end_n = np.empty(shape=[0, colomn - 2], dtype=int) #二维空数组创建
+    end_n = np.empty(shape=[0, colomn - 2], dtype=np.uint8) #二维空数组创建
     for i in range(1, row - 1):
+        middle_n = [0] * (colomn - 2)
         # log('row', i)
-        middle_n = []
         #使用蛇形方式取值
         if j == 0:
             j += 1
@@ -57,6 +55,7 @@ def high_medianblur_2(lay):
                         s = lay[i_i + k][j_j + d]
                         count = count_add(s, count)
                 j += 1
+                v += 1
             # 第一行之后的后边缘窗口处理
             elif j == (colomn - 2) and (i % 2) == 0:
                 j_j = j - 1
@@ -78,6 +77,7 @@ def high_medianblur_2(lay):
                     count = count_minus(lay[i_i + s][j + 2], count)
                     count = count_add(lay[i_i + s][j - 1], count)
                 j -= 1
+                v -= 1
             # 奇数行窗口处理，窗口正向行进
             else:
                 i_i = i - 1
@@ -85,17 +85,18 @@ def high_medianblur_2(lay):
                     count = count_minus(lay[i_i + s][j - 2], count)
                     count = count_add(lay[i_i + s][j + 1], count)
                 j += 1
+                v += 1
             #取数组中间值
             middle = median(count)
             # log('middle', middle)
 
             # 将中间值组成二维数组的行数组
-            middle_n.append(middle)
+            middle_n[v - 1] = middle
         # i = 340
         # log('middle_n', middle_n)
 
         # 将中间值的行数组填充入二维数组
         end_n = np.append(end_n, [middle_n], axis=0)
-    # log('end_n_short', end_n)
+    log('end_n_hing_2', end_n)
     return end_n
 

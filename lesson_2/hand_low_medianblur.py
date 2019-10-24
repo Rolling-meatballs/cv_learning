@@ -17,24 +17,29 @@ def low_short(lay):
     # log(lay[0])
     # log(colomn)
     # log(row)
-    end_n = np.empty(shape=[0, colomn - 2], dtype=int)
+    end_n = np.empty(shape=[0, colomn - 2], dtype=int) #二维空数组建立
     for i in range(row - 2):
         middle_n = []
         for j in range(colomn - 2):
             a = []
             # log(a)
+            #取3*3数组方格
             for k in range(3):
                 for d in range(3):
                     s = lay[i + k][j + d]
                     a.append(s)
                     # log(a)
+            #取中间值
             middle = median(a)
             # log('middle', middle)
+            #中间值组成行数组
             middle_n.append(middle)
             # log('middle_n', middle_n)
             # log(j)
         # i = 340
         # log('middle_n', middle_n)
+
+        # 将行数组填充入二维数组
         end_n = np.append(end_n, [middle_n], axis=0)
         # log(i)
         # log('end_n', end_n)
@@ -72,11 +77,3 @@ def low_short(lay):
 #         # break
 #     log('end_n', end_n)
 #     return end_n
-
-
-#对图像进行处理后输出_low
-
-
-#计数排序
-# def sort(number):
-#     max = 255

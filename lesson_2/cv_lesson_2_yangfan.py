@@ -27,7 +27,7 @@ def hand_medianblur(way):
     l_R = way(R)
     # log(B)
     l_img = cv2.merge((l_R, l_G, l_B)) #多图层图片融合
-    # show(l_img, 'l_img ')
+    show(l_img, 'l_img ')
     # show(l_B, 'l_B_img ')
     # show(R, 'R_img ')
 

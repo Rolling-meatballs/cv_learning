@@ -7,10 +7,12 @@ def high_medianblur_1(lay):
     row, colomn = lay.shape
     # log('row', row, 'colomn', colomn)
     j = 0
-    end_n = np.empty(shape=[0, colomn - 2], dtype=int)
+    end_n = np.empty(shape=[0, colomn - 2], dtype=int) #二维空数组建立
     for i in range(1, row - 1):
         # log('row', i)
         middle_n = []
+
+        #使用蛇形方式取值
         if j == 0:
             j += 1
         elif j == (colomn - 1):
@@ -70,11 +72,15 @@ def high_medianblur_1(lay):
                 a[8] = lay[i + 1][j + 1]
                 j += 1
             # log('a', a)
+            #取数组中间值
             middle = median(a)
             # log('middle', middle)
+            #将中间值组成二维数组的行数组
             middle_n.append(middle)
         # i = 340
         # log('middle_n', middle_n)
+
+        #将中间值的行数组填充入二维数组
         end_n = np.append(end_n, [middle_n], axis=0)
     # log('end_n_short', end_n)
     return end_n

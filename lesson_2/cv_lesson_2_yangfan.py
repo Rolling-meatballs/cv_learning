@@ -1,18 +1,19 @@
 import time
 import cv2
-from hand_low_medianblur import low_short
-from cv2_medianblur import  cv2_medianblur
-from high_medianblur_1 import high_medianblur_1
-from high_medianblur_2 import high_medianblur_2
+from hand_low_medianblur import low_short #高时间复杂度的方法
+from cv2_medianblur import  cv2_medianblur #opencv的方法
+from high_medianblur_1 import high_medianblur_1 #低时间复杂度的方法1
+from high_medianblur_2 import high_medianblur_2 #低时间复杂度的方法2
 from picture_show import (
     Pic,
     Or_show,
     show,
-)
-from write_txt import read_pic
-from out_put import log
+)  #处理和显示图片的方法
+from write_txt import read_pic #将数据写入TXT文件
+from out_put import log #log方法
 import numpy as np
 
+#将图片各个通道分开后处理，然后合并
 def hand_medianblur(way):
     B, G, R = Pic().pic_RGB()
 
@@ -25,7 +26,7 @@ def hand_medianblur(way):
     l_G = way(G)
     l_R = way(R)
     # log(B)
-    l_img = cv2.merge((l_R, l_G, l_B))
+    l_img = cv2.merge((l_R, l_G, l_B)) #多图层图片融合
     # show(l_img, 'l_img ')
     # show(l_B, 'l_B_img ')
     # show(R, 'R_img ')

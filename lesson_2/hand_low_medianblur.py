@@ -9,7 +9,7 @@ def median(list):
     md = order_list[4]
     return md
 
-#自定义中值滤波（2N）
+#自定义中值滤波，高时间复杂度的方法
 def low_short(lay):
     # value1 = time.localtime(int(time.time()))
     row = len(lay)

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from out_put import log
 
 
-def inference(w, b, x):
+def sigmoid(w, b, x):
     """
     做一个预测，同过给定一个w、b，之后给出任意一个x，都可以得到一个预测值y
     :param w: 线性回归的斜率，x的系数
@@ -13,7 +13,9 @@ def inference(w, b, x):
     :param x: 因变量
     :return: 预测值
     """
-    pred_y = w * x + b
+    X = w * x + b
+    pred_y = 1 / (1 + np.exp(- X))
+
     return pred_y
 
 
@@ -29,7 +31,7 @@ def eval_loss(w, b, x_list, gt_y_list):
     """
     avg_loss = 0
     for i in range(len(x_list)):
-        pred_y = inference(w, b, x_list[i])
+        pred_y = sigmoid(w, b, x_list[i])
         avg_loss += 0.5 * (pred_y - gt_y_list[i]) ** 2
     avg_loss /= len(gt_y_list)
     return avg_loss
@@ -56,7 +58,7 @@ def cal_step_gradient(batch_x_list, batch_gt_y_list, w, b, lr):
     avg_dw, avg_db = 0, 0
     batch_size = len(batch_x_list)
     for i in range(batch_size):
-        pred_y = inference(w, b, batch_x_list[i])
+        pred_y = sigmoid(w, b, batch_x_list[i])
         dw, db = gradient(pred_y, batch_gt_y_list[i], batch_x_list[i])
         avg_dw += dw
         avg_db += db
@@ -67,7 +69,7 @@ def cal_step_gradient(batch_x_list, batch_gt_y_list, w, b, lr):
     return w, b
 
 
-def train_Linear(x_list, gt_y_list, batch_size, lr, max_iter):
+def train_Regression(x_list, gt_y_list, batch_size, lr, max_iter):
     """
 
     :param x_list:

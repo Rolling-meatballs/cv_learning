@@ -1,7 +1,7 @@
-#关于作业的总结
+# 关于作业的总结
 
-##lesson_1
-###The issues in the assignment
+## lesson_1
+### The issues in the assignment
 1.Cv2 是opencv中的包
 	在anaconda 安装opencv时，要使用anaconda prompt 利用命令：
 	Conda install -c http://conda.binstar.org/menpo opencv
@@ -20,14 +20,14 @@
 	Table = np.array(table).astype('uint8'); not "unit8"
 
 
-##lesson_2
+## lesson_2
 
-###不同方法的运行时间
+### 不同方法的运行时间
 1. low_lever：    （1）单通道：1.39    （2）三通道： 4.07
 2. high_lever_1： （1）单通道：0.7256  （2) 三通道： 1.735
 3. high_lever_2： （1）单通道：4.9
 
-###问题分析
+### 问题分析
 1. low_lever的方法是自己以前学过C语言里面用过的，没啥好说的
 2. high_lever_1的方法是网上找到的的算法叫huang算法，具体没有时间没有研究
 3. high_lever_2的方法是在找1方法的时候看到的排序方法，本以为方法2会最快，没想到方法2速度
@@ -39,3 +39,9 @@
 5. 低时间复杂度方法1的图片能显示出来之后，发现图片发生位移，原因是采取了蛇形取中间值的方法，
 	导致奇偶数行的像素排列相反，通过提前建立数组，然后记录像素位置纠正，该问题最终解决。
 
+## lesson_3
+
+### 学习心得
+1. 因为数学基础比较弱，所以上课听的比较迷糊。 在课后反复听录播的时候才逐渐将尘封在记忆中的
+    知识逐渐想起来，老师讲的内容也有点感觉了，但是，还是比较迷。最后，跟着老师把代码打了一
+    遍，然后又分析代码，又明白一点了，仿佛抓住了课程的关键点。

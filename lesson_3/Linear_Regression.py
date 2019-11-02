@@ -79,8 +79,10 @@ def train_Linear(x_list, gt_y_list, batch_size, lr, max_iter):
     """
     w, b = 0, 0
     num_samples = len(x_list)
-    plt.ion()
-    fig, ax = plt.subplots()
+
+    # plt.ion()
+    # fig, ax = plt.subplots()
+    # plt.rcParams['lines.markersize'] = 3
     for i in range(max_iter):
         # 随机抽取（batch_size)个样本
         batch_idxs = np.random.choice(num_samples, batch_size)
@@ -90,6 +92,7 @@ def train_Linear(x_list, gt_y_list, batch_size, lr, max_iter):
         s1 = 'w:{}, b:{}'.format(w, b)
         s2 = 'loss is {}'.format(eval_loss(w, b, x_list, gt_y_list))
         log('s_1', s1, '\n', 's_2', s2)
-        ax.cla()
+
+        # ax.cla()
         # time.sleep(1)
     return w, b

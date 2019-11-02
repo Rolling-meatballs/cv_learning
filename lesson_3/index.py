@@ -45,4 +45,5 @@ def logisitic_regression():
 if __name__ == '__main__':
     # test()
     linear_regression()
+    # logisitic_regression()
 

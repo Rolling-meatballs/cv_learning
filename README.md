@@ -1,2 +1,4 @@
 # cv_learning
-yangfan
+author：yangfan
+
+学习cv之路
